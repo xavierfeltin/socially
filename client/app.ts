@@ -2,6 +2,8 @@ import {Component, View} from 'angular2/core';
 
 import {bootstrap} from 'angular2/platform/browser';
 
+import {Parties} from 'collections/parties';
+
 @Component({
     selector: 'app'
 })
@@ -10,7 +12,7 @@ import {bootstrap} from 'angular2/platform/browser';
 })
 class Socially {
 	parties: Array<Object>;
-	
+
 	constructor () {
 		this.parties = [{
 			'name': 'Dubstep-Free Zone',
