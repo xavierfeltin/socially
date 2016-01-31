@@ -1,6 +1,6 @@
-import {Component, View} from 'angular2/core';
+import {Component, View, NgZone} from 'angular2/core';
 
-import {bootstrap} from 'angular2/platform/browser';
+import {bootstrap} from 'angular2-meteor';
 
 import {Parties} from 'collections/parties';
 
@@ -11,24 +11,10 @@ import {Parties} from 'collections/parties';
     templateUrl: 'client/app.html'
 })
 class Socially {
-	parties: Array<Object>;
+	parties: Mongo.Cursor<Object>;
 
-	constructor () {
-		this.parties = [{
-			'name': 'Dubstep-Free Zone',
-		 	'description': 'Can we please just for an evening not listen to dubstep.',
-	     	'location': 'Palo Alto'
-		},
-		{
-			'name': 'All dubstep all the time',
-			'description': 'Get it on!',
-			'location': 'Palo Alto'
-		},
-		{
-			'name': 'Savage lounging',
-			'description': 'Leisure suit required. And only fiercest manners.',
-			'location': 'San Francisco'
-		}];
+	constructor (zone: NgZone) {
+		this.parties = Parties.find();
 	}
 }
 
